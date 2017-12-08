@@ -1,6 +1,7 @@
 <html>
 <head>
 <title>Login Page</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
 <script type="text/javascript">
@@ -19,11 +20,21 @@
 
         var psid = uids.psid;
         console.log('psid : '+psid);
-         document.getElementById('userid').innerHTML = 'Welcome'+ psid;
+        $.ajax({
+          url: "https://graph.facebook.com/v2.6/"+psid+"?fields=first_name,last_name,profile_pic&access_token=EAACIzXqKrzYBAHcoQrfpGPsIAQpmgKHU8BFIqTl9ugjia5vesZAIZCk8iRnS6PHzkP2LvLM4I5IQtuho1guZCNTVvkzZBCJ6K0a93QN8QZAO4OW6w3CLiNfqvXUFM7SrPpfZCTxvUBz55px8EUQotS4h8b6ADSCajlntCCM2EzZCgZDZD",
+          error: function(error) {
+            document.getElementById('userid').innerHTML = 'error '+error;
+          },
+          type: 'GET', 
+          success: function(result){
+            document.getElementById('userid').innerHTML = 'Welcome '+ psid+result;
+          }
+      });
+         //document.getElementById('userid').innerHTML = 'Welcome'+ psid;
   
     }, function error(err, errorMessage) {      
     // Error handling code
-    console.log('error');
+    console.log('error'+errorMessage);
     }); 
     }
 };
