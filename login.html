@@ -14,15 +14,14 @@
 
   window.extAsyncInit = function() {
     document.getElementById('submit').onclick = function(){
+      setTimeout(function () {
       MessengerExtensions.requestCloseBrowser(function success() {
-        setTimeout(function () {
             window.location.href = "https://www.messenger.com/closeWindow/?image_url=&display_text=Welcome User";
             console.log('redirected.');
-          }, 3000);
       }, function error(err) {
         console.log('error in redirecting'+err)
       });
-      
+      }, 3000);
     }
 };
 </script>
