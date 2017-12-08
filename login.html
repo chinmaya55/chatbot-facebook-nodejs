@@ -27,7 +27,7 @@
           },
           type: 'GET', 
           success: function(result){
-            document.getElementById('userid').innerHTML = 'Welcome '+ psid+JSON.stringify(result);
+            document.getElementById('userid').innerHTML = 'Welcome '+ result.last_name +', '+result.first_name+ " " +psid;
           }
       });
          //document.getElementById('userid').innerHTML = 'Welcome'+ psid;
