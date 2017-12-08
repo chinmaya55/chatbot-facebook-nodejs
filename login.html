@@ -19,9 +19,11 @@
 
         var psid = uids.psid;
         console.log('psid : '+psid);
+         document.getElementById('userid').innerHTML = 'Welcome'+ psid;
   
     }, function error(err, errorMessage) {      
     // Error handling code
+    console.log('error');
     }); 
     }
 };
@@ -48,7 +50,8 @@
 <td><input id="submit" type="submit" value="Login"></td>
 </tr>
 
-</table>
 
+</table>
+<div id="userid"></div>
 </body>
 </html>
