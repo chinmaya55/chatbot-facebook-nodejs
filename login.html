@@ -1,7 +1,6 @@
 <html>
 <head>
 <title>Login Page</title>
-<script type="text/javascript" src="app.js"></script>
 </head>
 <body>
 <script type="text/javascript">
@@ -15,15 +14,15 @@
 
   window.extAsyncInit = function() {
     document.getElementById('submit').onclick = function(){
-      setTimeout(function () {
-      MessengerExtensions.requestCloseBrowser(function success() {
-            window.location.href = "https://www.messenger.com/closeWindow/?image_url=&display_text=Welcome User";
-            console.log('redirected.');
-            sendTextMessage(senderID, "Thank you for login.");
-      }, function error(err) {
-        console.log('error in redirecting'+err)
-      });
-      }, 3000);
+      MessengerExtensions.getUserID(function success(uids) {
+    // User ID was successfully obtained.
+
+        var psid = uids.psid;
+        console.log('psid : '+psid);
+  
+    }, function error(err, errorMessage) {      
+    // Error handling code
+    }); 
     }
 };
 </script>
