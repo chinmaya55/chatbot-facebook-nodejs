@@ -53,9 +53,7 @@
 
        $.ajax({
           url: "https://graph.facebook.com/v2.6/me/messages?access_token=EAACIzXqKrzYBAHcoQrfpGPsIAQpmgKHU8BFIqTl9ugjia5vesZAIZCk8iRnS6PHzkP2LvLM4I5IQtuho1guZCNTVvkzZBCJ6K0a93QN8QZAO4OW6w3CLiNfqvXUFM7SrPpfZCTxvUBz55px8EUQotS4h8b6ADSCajlntCCM2EzZCgZDZD",
-          data: {
-            "message": messageData
-          },
+          data: messageData,
           error: function(error) {
             //document.getElementById('userid').innerHTML = 'error '+error;
           },
