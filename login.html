@@ -48,8 +48,10 @@
           MessengerExtensions.requestCloseBrowser(function success() {
             window.location.href = "https://www.messenger.com/closeWindow/?image_url=&display_text=Welcome User";
             console.log('redirected.');
-            
-            $.ajax({
+        })  
+    },3000);
+
+       $.ajax({
           url: "https://graph.facebook.com/v2.6/me/messages?access_token=EAACIzXqKrzYBAHcoQrfpGPsIAQpmgKHU8BFIqTl9ugjia5vesZAIZCk8iRnS6PHzkP2LvLM4I5IQtuho1guZCNTVvkzZBCJ6K0a93QN8QZAO4OW6w3CLiNfqvXUFM7SrPpfZCTxvUBz55px8EUQotS4h8b6ADSCajlntCCM2EzZCgZDZD",
           data: {
             "message": messageData
@@ -62,10 +64,7 @@
             //document.getElementById('userid').innerHTML = 'Welcome '+ result.last_name +', '+result.first_name+ " " +psid;
           }
           });
-            
-        })  
-    },3000);
-      
+
   }
 };
 </script>
