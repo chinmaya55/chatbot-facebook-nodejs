@@ -58,7 +58,7 @@ const sessionIds = new Map();
 
 // Index route
 app.get('/', function (req, res) {
-	res.send(./login.html);
+	res.sendFile(__dirname + '/login.html');
 })
 
 // for Facebook verification
