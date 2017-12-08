@@ -61,6 +61,7 @@ app.get('/', function (req, res) {
 	res.sendFile(__dirname + '/login.html');
 })
 
+
 // for Facebook verification
 app.get('/webhook/', function (req, res) {
 	console.log("request");

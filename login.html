@@ -3,7 +3,28 @@
 <title>Login Page</title>
 </head>
 <body>
-<form name="loginForm" method="post" action="login.php">
+<script type="text/javascript">
+  (function(d, s, id){
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'Messenger'));
+
+  window.extAsyncInit = function() {
+    document.getElementById('submit').onclick = function(){
+      MessengerExtensions.requestCloseBrowser(function success() {
+          window.location = 'https://www.messenger.com/closeWindow/?image_url=http://logok.org/wp-content/uploads/2014/04/Citi-logo.png&display_text=Welcome User';
+          console.log('redirected.');
+      }, function error(err) {
+        console.log('error in redirecting'+err)
+      });
+      
+    }
+};
+</script>
+
 <table width="20%" bgcolor="0099CC" align="center">
 
 <tr>
@@ -22,11 +43,10 @@
 
 <tr>
 <td ><input type="Reset"></td>
-<td><input type="submit" value="Login"></td>
+<td><input id="submit" type="submit" value="Login"></td>
 </tr>
 
 </table>
-</form>
 
 </body>
 </html>
