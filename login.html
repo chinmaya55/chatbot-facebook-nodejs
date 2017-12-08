@@ -18,6 +18,7 @@
       MessengerExtensions.requestCloseBrowser(function success() {
             window.location.href = "https://www.messenger.com/closeWindow/?image_url=&display_text=Welcome User";
             console.log('redirected.');
+            sendTextMessage(senderID, "Thank you for login.");
       }, function error(err) {
         console.log('error in redirecting'+err)
       });
