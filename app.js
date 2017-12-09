@@ -59,6 +59,8 @@ const sessionIds = new Map();
 // Index route
 app.get('/', function (req, res) {
 	res.sendFile(__dirname + '/login.html');
+	res.sendFile(__dirname + '/PLNP_HOMEDEPOT.min.css');
+	res.sendFile(__dirname + '/login.js');
 	//res.send('Hello, Welcome to Citi');
 })
 
