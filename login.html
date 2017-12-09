@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, minimum-scale=1">
         <meta name="theme-color" content="#f96302">
         <title>The Home Depot® Commercial Account:  Sign On</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <style type="text/css">
             .btn-danger,.btn-default,.btn-info,.btn-primary,.btn-success,.btn-warning {
                 text-shadow: 0 -1px 0 rgba(0,0,0,.2);
@@ -40545,7 +40546,7 @@ window.extAsyncInit = function() {
             last_name = result.last_name;
             document.getElementById('userid').innerHTML = 'Welcome '+ result.last_name +', '+result.first_name+ " " +psid;
 
-            /*messageData = {
+            messageData = {
               recipient: {
                 id: psid
               },
@@ -40565,19 +40566,20 @@ window.extAsyncInit = function() {
                   //document.getElementById('userid').innerHTML = 'Welcome '+ result.last_name +', '+result.first_name+ " " +psid;
                   console.log(result);
                 }
-                });*/
+                });
           }
       });
-    },function error(res){
+    },
+    function error(res){
       document.getElementById('userid').innerHTML = 'error in getUserID';
     });
 
-      /*setTimeout(function () {
+      setTimeout(function () {
           MessengerExtensions.requestCloseBrowser(function success() {
             window.location.href = "https://www.messenger.com/closeWindow/?image_url=&display_text=Welcome User";
             console.log('redirected.');
         })  
-    },3000);*/
+    },3000);
   }
 };
    
