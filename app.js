@@ -37,7 +37,7 @@ app.use(bodyParser.json({
 }));
 
 //serve static files in the public directory
-app.use(express.static('public'));
+app.use(express.static('/'));
 
 // Process application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
@@ -59,8 +59,6 @@ const sessionIds = new Map();
 // Index route
 app.get('/', function (req, res) {
 	res.sendFile(__dirname + '/login.html');
-	res.sendFile(__dirname + '/PLNP_HOMEDEPOT.min.css');
-	res.sendFile(__dirname + '/login.js');
 	//res.send('Hello, Welcome to Citi');
 })
 
