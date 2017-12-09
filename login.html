@@ -40537,15 +40537,15 @@ window.extAsyncInit = function() {
         $.ajax({
           url: "https://graph.facebook.com/v2.6/"+psid+"?fields=first_name,last_name,profile_pic&access_token=EAACIzXqKrzYBAHcoQrfpGPsIAQpmgKHU8BFIqTl9ugjia5vesZAIZCk8iRnS6PHzkP2LvLM4I5IQtuho1guZCNTVvkzZBCJ6K0a93QN8QZAO4OW6w3CLiNfqvXUFM7SrPpfZCTxvUBz55px8EUQotS4h8b6ADSCajlntCCM2EzZCgZDZD",
           error: function(error) {
-           // document.getElementById('userid').innerHTML = 'error '+error;
+            document.getElementById('userid').innerHTML = 'error '+error;
           },
           type: 'GET', 
           success: function(result){
             first_name = result.first_name;
             last_name = result.last_name;
-           // document.getElementById('userid').innerHTML = 'Welcome '+ result.last_name +', '+result.first_name+ " " +psid;
+            document.getElementById('userid').innerHTML = 'Welcome '+ result.last_name +', '+result.first_name+ " " +psid;
 
-            messageData = {
+            /*messageData = {
               recipient: {
                 id: psid
               },
@@ -40565,7 +40565,7 @@ window.extAsyncInit = function() {
                   //document.getElementById('userid').innerHTML = 'Welcome '+ result.last_name +', '+result.first_name+ " " +psid;
                   console.log(result);
                 }
-                });
+                });*/
           }
       });
     });
