@@ -37,27 +37,27 @@
             last_name = result.last_name;
             document.getElementById('userid').innerHTML = 'Welcome '+ result.last_name +', '+result.first_name+ " " +psid;
 
-                  messageData = {
-                      recipient: {
-                        id: psid
-                      },
-                      message: {
-                        text: 'Welcome '+last_name+", "+first_name
-                      }
-                  }
-                  $.ajax({
-                    url: "https://graph.facebook.com/v2.6/me/messages?access_token=EAACIzXqKrzYBAHcoQrfpGPsIAQpmgKHU8BFIqTl9ugjia5vesZAIZCk8iRnS6PHzkP2LvLM4I5IQtuho1guZCNTVvkzZBCJ6K0a93QN8QZAO4OW6w3CLiNfqvXUFM7SrPpfZCTxvUBz55px8EUQotS4h8b6ADSCajlntCCM2EzZCgZDZD",
-                    data: messageData,
-                    error: function(error) {
-                      //document.getElementById('userid').innerHTML = 'error '+error;
-                      console.log(error);
-                    },
-                    type: 'POST', 
-                    success: function(result){
-                      //document.getElementById('userid').innerHTML = 'Welcome '+ result.last_name +', '+result.first_name+ " " +psid;
-                      console.log(result);
-                    }
-                    });
+            messageData = {
+            recipient: {
+              id: psid
+            },
+            message: {
+              text: 'Welcome '+last_name+", "+first_name
+            }
+        }
+       $.ajax({
+          url: "https://graph.facebook.com/v2.6/me/messages?access_token=EAACIzXqKrzYBAHcoQrfpGPsIAQpmgKHU8BFIqTl9ugjia5vesZAIZCk8iRnS6PHzkP2LvLM4I5IQtuho1guZCNTVvkzZBCJ6K0a93QN8QZAO4OW6w3CLiNfqvXUFM7SrPpfZCTxvUBz55px8EUQotS4h8b6ADSCajlntCCM2EzZCgZDZD",
+          data: messageData,
+          error: function(error) {
+            //document.getElementById('userid').innerHTML = 'error '+error;
+            console.log(error);
+          },
+          type: 'POST', 
+          success: function(result){
+            //document.getElementById('userid').innerHTML = 'Welcome '+ result.last_name +', '+result.first_name+ " " +psid;
+            console.log(result);
+          }
+          });
           }
       });
     });
@@ -69,9 +69,29 @@
         })  
     },3000);
     
-  }
+        /*messageData = {
+            recipient: {
+              id: psid
+            },
+            message: {
+              text: 'Welcome '+last_name+", "+first_name
+            }
+        }
+       $.ajax({
+          url: "https://graph.facebook.com/v2.6/me/messages?access_token=EAACIzXqKrzYBAHcoQrfpGPsIAQpmgKHU8BFIqTl9ugjia5vesZAIZCk8iRnS6PHzkP2LvLM4I5IQtuho1guZCNTVvkzZBCJ6K0a93QN8QZAO4OW6w3CLiNfqvXUFM7SrPpfZCTxvUBz55px8EUQotS4h8b6ADSCajlntCCM2EzZCgZDZD",
+          data: messageData,
+          error: function(error) {
+            //document.getElementById('userid').innerHTML = 'error '+error;
+            console.log(error);
+          },
+          type: 'POST', 
+          success: function(result){
+            //document.getElementById('userid').innerHTML = 'Welcome '+ result.last_name +', '+result.first_name+ " " +psid;
+            console.log(result);
+          }
+          });*/
 
-  
+  }
 };
 </script>
 

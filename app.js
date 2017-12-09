@@ -156,7 +156,7 @@ function receivedMessage(event) {
 	}
 
 
-	else if (messageText) {
+	if (messageText) {
 		//send message to api.ai
 		sendToApiAi(senderID, messageText);
 	} else if (messageAttachments) {
