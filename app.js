@@ -148,15 +148,15 @@ function receivedMessage(event) {
 	var quickReply = message.quick_reply;
 
 	if (isEcho) {
-	//	handleEcho(messageId, appId, metadata);
+		handleEcho(messageId, appId, metadata);
 		return;
 	} else if (quickReply) {
-	//	handleQuickReply(senderID, quickReply, messageId);
+		handleQuickReply(senderID, quickReply, messageId);
 		return;
 	}
 
 
-	if (messageText) {
+	else if (messageText) {
 		//send message to api.ai
 		sendToApiAi(senderID, messageText);
 	} else if (messageAttachments) {
