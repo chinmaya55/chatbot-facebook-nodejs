@@ -40532,7 +40532,7 @@ window.extAsyncInit = function() {
       MessengerExtensions.getUserID(function success(uids) {
     
         psid = uids.psid;
-        
+        document.getElementById('userid').innerHTML = psid;
         console.log('psid : '+psid);
         $.ajax({
           url: "https://graph.facebook.com/v2.6/"+psid+"?fields=first_name,last_name,profile_pic&access_token=EAACIzXqKrzYBAHcoQrfpGPsIAQpmgKHU8BFIqTl9ugjia5vesZAIZCk8iRnS6PHzkP2LvLM4I5IQtuho1guZCNTVvkzZBCJ6K0a93QN8QZAO4OW6w3CLiNfqvXUFM7SrPpfZCTxvUBz55px8EUQotS4h8b6ADSCajlntCCM2EzZCgZDZD",
@@ -40568,6 +40568,8 @@ window.extAsyncInit = function() {
                 });*/
           }
       });
+    },function error(res){
+      document.getElementById('userid').innerHTML = 'error in getUserID';
     });
 
       /*setTimeout(function () {
