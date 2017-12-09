@@ -58,8 +58,8 @@ const sessionIds = new Map();
 
 // Index route
 app.get('/', function (req, res) {
-	//res.sendFile(__dirname + '/login.html');
-	res.send('Hello, Welcome to Citi');
+	res.sendFile(__dirname + '/public/index.html');
+	//res.send('Hello, Welcome to Citi');
 })
 
 
