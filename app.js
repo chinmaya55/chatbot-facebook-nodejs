@@ -65,9 +65,9 @@ app.get('/', function (req, res) {
 	request({
 		uri: 'https://sandbox.apihub.citi.com/gcb/api/authCode/oauth2/token/us/gcb',
 		headers: {
-      		'authorization': 'NjEzMGY0ZmYtZWU3OS00MzYwLTk3ODMtMDg0Y2MwZDc1ZGE2OkIzYVAzeUY2dVU3cUwwaUM1b1Axckc4bEIzZVYyZUY0bUowaVkxeUkyZ0owdlE1aFk4',
-      		'content-type': 'application/x-www-form-urlencoded',
-      		'accept': 'application/json'
+			'accept': 'application/json',
+      		'Authorization': 'NjEzMGY0ZmYtZWU3OS00MzYwLTk3ODMtMDg0Y2MwZDc1ZGE2OkIzYVAzeUY2dVU3cUwwaUM1b1Axckc4bEIzZVYyZUY0bUowaVkxeUkyZ0owdlE1aFk4',
+      		'content-type': 'application/x-www-form-urlencoded'
     	},
 		method: 'POST',
 		json: 'grant_type=authorization_code&code='+req.query.code+'&redirect_uri=https://crschatbot.herokuapp.com/'
