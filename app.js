@@ -37,7 +37,7 @@ app.use(bodyParser.json({
 }));
 
 //serve static files in the public directory
-app.use(express.static('/'));
+//app.use(express.static('/'));
 
 // Process application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
@@ -56,8 +56,12 @@ const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
 });
 const sessionIds = new Map();
 
+const authcode = new Map();
+
 // Index route
 app.get('/', function (req, res) {
+	authcode.set("oauthCode", req.query.code);
+	console.log("++oauthCode++"+req.query.code);
 	res.sendFile(__dirname + '/login.html');
 	//res.send('Hello, Welcome to Citi');
 })

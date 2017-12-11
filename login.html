@@ -4,9 +4,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, minimum-scale=1">
         <title>Chatbot: Authorization</title>
-        <script type="text/javascript">
+
+<script type="text/javascript">
             
-     (function(d, s, id){
+(function(d, s, id){
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
   js = d.createElement(s); js.id = id;
@@ -14,12 +15,13 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'Messenger'));
 
-window.extAsyncInit = function() {
-          MessengerExtensions.requestCloseBrowser(function success() {
-            window.location.href = "https://www.messenger.com/closeWindow/?image_url=&display_text=Welcome User";
-            console.log('redirected.');
-        })
+window.extAsyncInit = function() 
+{
+    MessengerExtensions.requestCloseBrowser(function success() 
+    {
+        window.location.href = "https://www.messenger.com/closeWindow/?image_url=&display_text=Welcome User";
+    });
 };
    
-        </script>
+</script>
     </html>
