@@ -62,6 +62,24 @@ const authcode = new Map();
 app.get('/', function (req, res) {
 	authcode.set("oauthCode", req.query.code);
 	console.log("++oauthCode++"+req.query.code);
+	request({
+		uri: 'https://sandbox.apihub.citi.com/gcb/api/authCode/oauth2/token/us/gcb',
+		headers: {
+      		'authorization': 'NjEzMGY0ZmYtZWU3OS00MzYwLTk3ODMtMDg0Y2MwZDc1ZGE2OkIzYVAzeUY2dVU3cUwwaUM1b1Axckc4bEIzZVYyZUY0bUowaVkxeUkyZ0owdlE1aFk4',
+      		'content-type': 'application/x-www-form-urlencoded',
+      		'accept': 'application/json'
+    	},
+		method: 'POST',
+		json: 'grant_type=authorization_code&code='+req.query.code+'&redirect_uri=https://crschatbot.herokuapp.com/'
+
+	}, function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+			console.log('response : '+response+' Body : '+ body);
+			console.log("Success access_token++ : %s",response.access_token);
+		} else {
+			console.error("Failed calling Send API", response.statusCode, response.statusMessage, body.error);
+		}
+	});
 	res.sendFile(__dirname + '/login.html');
 	//res.send('Hello, Welcome to Citi');
 })
