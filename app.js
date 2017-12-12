@@ -73,6 +73,7 @@ app.get('/', function (req, res) {
 		json: 'grant_type=authorization_code&code='+req.query.code+'&redirect_uri=https://crschatbot.herokuapp.com/'
 
 	}, function (error, response, body) {
+		console.log('++response++ : '+response+' ++Body++ : '+ body);
 		if (!error && response.statusCode == 200) {
 			console.log('response : '+response+' Body : '+ body);
 			console.log("Success access_token++ : %s",response.access_token);

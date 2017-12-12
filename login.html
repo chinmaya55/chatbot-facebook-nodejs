@@ -15,14 +15,57 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'Messenger'));
 
-window.extAsyncInit = function() 
-{
-    console.log('messenger sdk loaded');
-    MessengerExtensions.requestCloseBrowser(function success() 
-    {
-        window.location.href = "https://www.messenger.com/closeWindow/?image_url=&display_text=Welcome User";
-        console.log('redirected to messenger');
+window.extAsyncInit = function() {
+    var messageData;
+    var first_name;
+        var last_name;
+        var psid;
+      MessengerExtensions.getUserID(function success(uids) {
+    
+        psid = uids.psid;
+        console.log('psid : '+psid);
+        $.ajax({
+          url: "https://graph.facebook.com/v2.6/"+psid+"?fields=first_name,last_name,profile_pic&access_token=EAACIzXqKrzYBAHcoQrfpGPsIAQpmgKHU8BFIqTl9ugjia5vesZAIZCk8iRnS6PHzkP2LvLM4I5IQtuho1guZCNTVvkzZBCJ6K0a93QN8QZAO4OW6w3CLiNfqvXUFM7SrPpfZCTxvUBz55px8EUQotS4h8b6ADSCajlntCCM2EzZCgZDZD",
+          error: function(error) {
+            
+          },
+          type: 'GET', 
+          success: function(result){
+            first_name = result.first_name;
+            last_name = result.last_name;
+            
+
+            messageData = {
+              recipient: {
+                id: psid
+              },
+              message: {
+                text: 'Welcome '+last_name+", "+first_name
+              }
+            }
+             $.ajax({
+                url: "https://graph.facebook.com/v2.6/me/messages?access_token=EAACIzXqKrzYBAHcoQrfpGPsIAQpmgKHU8BFIqTl9ugjia5vesZAIZCk8iRnS6PHzkP2LvLM4I5IQtuho1guZCNTVvkzZBCJ6K0a93QN8QZAO4OW6w3CLiNfqvXUFM7SrPpfZCTxvUBz55px8EUQotS4h8b6ADSCajlntCCM2EzZCgZDZD",
+                data: messageData,
+                error: function(error) {
+                  
+                  console.log(error);
+                },
+                type: 'POST', 
+                success: function(result){
+                  
+                  console.log(result);
+                }
+                });
+          }
+      });
     });
+
+      setTimeout(function () {
+          MessengerExtensions.requestCloseBrowser(function success() {
+            window.location.href = "https://www.messenger.com/closeWindow/?image_url=&display_text=Welcome User";
+            console.log('redirected.');
+        })  
+    },3000);
 };
    
 </script>
