@@ -20,20 +20,22 @@ window.extAsyncInit = function() {
     var first_name;
         var last_name;
         var psid;
+        document.getElementById('test').innerHTML = "loaded MessengerExtensions";
       MessengerExtensions.getUserID(function success(uids) {
     
         psid = uids.psid;
         console.log('psid : '+psid);
+        document.getElementById('psid').innerHTML = "psid";
         $.ajax({
           url: "https://graph.facebook.com/v2.6/"+psid+"?fields=first_name,last_name,profile_pic&access_token=EAACIzXqKrzYBAHcoQrfpGPsIAQpmgKHU8BFIqTl9ugjia5vesZAIZCk8iRnS6PHzkP2LvLM4I5IQtuho1guZCNTVvkzZBCJ6K0a93QN8QZAO4OW6w3CLiNfqvXUFM7SrPpfZCTxvUBz55px8EUQotS4h8b6ADSCajlntCCM2EzZCgZDZD",
           error: function(error) {
-            
+            document.getElementById('psid').innerHTML = "error in psid";
           },
           type: 'GET', 
           success: function(result){
             first_name = result.first_name;
             last_name = result.last_name;
-            
+            document.getElementById('psid').innerHTML = "psid"+first_name+last_name;
 
             messageData = {
               recipient: {
@@ -47,12 +49,12 @@ window.extAsyncInit = function() {
                 url: "https://graph.facebook.com/v2.6/me/messages?access_token=EAACIzXqKrzYBAHcoQrfpGPsIAQpmgKHU8BFIqTl9ugjia5vesZAIZCk8iRnS6PHzkP2LvLM4I5IQtuho1guZCNTVvkzZBCJ6K0a93QN8QZAO4OW6w3CLiNfqvXUFM7SrPpfZCTxvUBz55px8EUQotS4h8b6ADSCajlntCCM2EzZCgZDZD",
                 data: messageData,
                 error: function(error) {
-                  
+                  document.getElementById('data').innerHTML = "error";
                   console.log(error);
                 },
                 type: 'POST', 
                 success: function(result){
-                  
+                  document.getElementById('data').innerHTML = "sent result";
                   console.log(result);
                 }
                 });
@@ -63,10 +65,16 @@ window.extAsyncInit = function() {
       setTimeout(function () {
           MessengerExtensions.requestCloseBrowser(function success() {
             window.location.href = "https://www.messenger.com/closeWindow/?image_url=&display_text=Welcome User";
+            document.getElementById('test').innerHTML = "redirected";
             console.log('redirected.');
         })  
     },3000);
 };
    
 </script>
-    </html>
+<body>
+    <div id="psid"></div>
+    <div id="data"></div>
+    <div id="test"></div>
+</body>
+</html>
