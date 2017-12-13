@@ -60,6 +60,7 @@ const authcode = new Map();
 
 // Index route
 app.get('/', function (req, res) {
+	res.sendFile(__dirname + '/login.html');
 	if(req.query != undefined){
 		if(req.query.code != undefined){
 			authcode.set("oauthCode", req.query.code);
@@ -83,10 +84,8 @@ app.get('/', function (req, res) {
 					console.error("Failed calling Send API", response.statusCode, response.statusMessage, body.error);
 				}
 			});
-			res.sendFile(__dirname + '/login.html');
+			//res.sendFile(__dirname + '/login.html');
 		}
-	}else{
-		res.send("Hello World!! This is chinmaya.");
 	}
 })
 
